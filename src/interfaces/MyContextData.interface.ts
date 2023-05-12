@@ -1,6 +1,10 @@
 import React from "react";
 
 export default interface MyContextData {
-  weatherForecasts: Array<unknown>;
-  setWeatherForecasts: React.Dispatch<React.SetStateAction<never[]>>;
+  location: Array<unknown>;
+  setLocation: React.Dispatch<React.SetStateAction<Array<unknown>>>;
+  forecast: Array<unknown>;
+  setForecast: React.Dispatch<React.SetStateAction<Array<unknown>>>;
+  current: Array<unknown>;
+  setCurrent: React.Dispatch<React.SetStateAction<Array<unknown>>>;
 }

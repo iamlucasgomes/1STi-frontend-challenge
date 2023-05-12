@@ -1,16 +1,21 @@
+import { useAppContext } from "@/hooks/useAppContext.hook"
 import getWeatherForecastApi from "@/services/getWeatherForecastApi"
 import { ChangeEvent, useCallback, useState } from "react"
 
 export default function Input() {
   const [inputValue, setInputValue] = useState('')
+  const { setLocation } = useAppContext();
 
   const handleInputValue = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value)
   }, [])
 
-  const handleKeyDown = (event: { key: string }) => {
+  const handleKeyDown = async (event: { key: string }) => {
     if (event.key === 'Enter') {
-      getWeatherForecastApi(inputValue);
+      await getWeatherForecastApi(inputValue).then((response) => {
+        setLocation(response.data);
+      });
+
       setInputValue('');
     }
   };

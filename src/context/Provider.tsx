@@ -1,5 +1,5 @@
 import { ReactNode, useState, useMemo, useCallback } from "react";
-import {  AppContext } from ".";
+import { AppContext } from ".";
 import MyContextData from "@/interfaces/MyContextData.interface";
 
 interface IProps {
@@ -8,14 +8,20 @@ interface IProps {
 
 export const AppContextProvider = ({ children }: IProps) => {
 
-const [weatherForecasts, setWeatherForecasts] = useState([]);
+  const [location, setlocation] = useState([]);
+  const [forecast, setForecast] = useState([]);
+  const [current, setCurrent] = useState([]);
 
   const context: MyContextData = {
-    weatherForecasts,
-    setWeatherForecasts
+    location,
+    forecast,
+    current,
+    setlocation,
+    setForecast,
+    setCurrent
   };
 
   return <AppContext.Provider value={context}>
-          {children}
-         </AppContext.Provider>
+    {children}
+  </AppContext.Provider>
 }
