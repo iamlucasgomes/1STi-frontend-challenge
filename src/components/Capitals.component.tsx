@@ -35,7 +35,7 @@ export default function Capitals() {
     // }
     return (
         <section>
-            <div>
+            <div className="mt-3 border-t border-white">
                 <h1 className="text-3xl text-start text-white arial">Capitais</h1>
             </div>
             <div className="grid grid-cols-2">
