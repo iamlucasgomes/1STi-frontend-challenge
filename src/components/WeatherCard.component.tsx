@@ -31,7 +31,7 @@ export default function WeatherCard() {
         <div className="mt-3 border-t border-orange flex justify-center items-center">
           <table className="table-fixed text-center">
             <thead>
-              {forecast.forecastday.slice(0, 5).map((day) => {
+              {forecast.forecastday.slice(2, 7).map((day) => {
                 const myDate = new Date(day.date);
                 return (
                   <td className="p-1 text-gray-700 open-sans-bold text-sm" key={dayOfTheWeek[myDate.getDay()]}>{dayOfTheWeek[myDate.getDay()]}</td>
@@ -39,7 +39,7 @@ export default function WeatherCard() {
               })}
             </thead>
             <tbody>
-              {forecast.forecastday.slice(0, 5).map((day) => {
+              {forecast.forecastday.slice(2, 7).map((day) => {
                 return (
                   <td className="p-1 text-orange open-sans-bold text-xs" key={`${day.date}`}>{`${Math.floor(day.day.mintemp_c)}° ${Math.floor(day.day.maxtemp_c)
                     }°`}</td>
