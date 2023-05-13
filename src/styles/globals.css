@@ -16,6 +16,16 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.open-sans-light {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+.open-sans-bold {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+}
+
 .mukta-light {
   font-family: 'Mukta Vaani', sans-serif;
   font-weight: 300;
