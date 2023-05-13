@@ -1,38 +1,55 @@
 import CapitalsWeather from "@/interfaces/CapitalsWeather.interface";
 import getWeatherForecastApi from "@/services/getWeatherForecastApi";
 import CapitalsWeatherMock from "@/tests/mocks/capitalsWeather.mock";
-import { get } from "http";
-import { useState } from "react"
+
+import { useEffect, useState } from "react"
 
 export default function Capitals() {
     const capitals = [
         "Rio de Janeiro",
         "São Paulo",
         "Belo Horizonte",
-        "Brasília",
+        "Brasilia",
         "Belém",
         "Salvador",
         "Curitiba",
         "Fortaleza",
         "Manaus",
-        "João Pessoa"
+        "Joao Pessoa"
     ];
+    const [weatherData, setWeatherData] = useState<CapitalsWeather[]>([]);
+    useEffect(() => {
+        async function fetchWeatherData() {
+            const promises = capitals.map(capital =>
+                getWeatherForecastApi(capital)
+                    .then(response => {
+                        if (!response) {
+                            throw new Error('City not found');
+                        }
+                        return response;
+                    })
+                    .then(data => ({
+                        name: data.location.name,
+                        maxTemp: data.forecast.forecastday[0].day.maxtemp_c,
+                        minTemp: data.forecast.forecastday[0].day.mintemp_c,
+                    }))
+                    .catch(error => {
+                        console.error(error);
+                        return null;
+                    }))
+            const weatherDataList = await Promise.all(promises);
+            const capitalsWeather: CapitalsWeather[] = []
+            // console.log(weatherDataList)
+            for (const city of weatherDataList) {
+                if(city !== null)
+                capitalsWeather.push(city)
+            }
 
-    const capitalsWeather: CapitalsWeather[] = [];
-
-    // for (const capital in capitals) {
-    //     getWeatherForecastApi(capital).then((response) => {
-    //         capitalsWeather.push({
-    //             name: response.location.name,
-    //             maxTemp: response.forecast.forecastday[0].day.maxtemp_c,
-    //             minTemp: response.forecast.forecastday[0].day.mintemp_c,
-    //         });
-    //     })
-    // }
-
-
-
-    // }
+            setWeatherData(capitalsWeather);
+        }
+        // console.log(capitalsWeather)
+        fetchWeatherData()
+    }, [capitals])
     return (
         <section>
             <div className="mt-3 border-t border-white">
@@ -47,11 +64,11 @@ export default function Capitals() {
                         </tr>
                     </thead>
                     <tbody>
-                        {CapitalsWeatherMock.slice(0, 5).map((capital) => (
-                            <tr key={capital.name}>
-                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${capital.minTemp}°`}</td>
-                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${capital.maxTemp}°`}</td>
-                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1 ">{capital.name}</td>
+                        {weatherData.slice(0, 5).map(({ name, maxTemp, minTemp }) => (
+                            <tr key={name}>
+                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(minTemp)}°`}</td>
+                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(maxTemp)}°`}</td>
+                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1 ">{name}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -64,11 +81,11 @@ export default function Capitals() {
                         </tr>
                     </thead>
                     <tbody>
-                        {CapitalsWeatherMock.slice(5, 10).map((capital) => (
-                            <tr key={capital.name}>
-                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${capital.minTemp}°`}</td>
-                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${capital.maxTemp}°`}</td>
-                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{capital.name}</td>
+                        {weatherData.slice(5, 10).map(({ name, maxTemp, minTemp }) => (
+                            <tr key={name}>
+                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(minTemp)}°`}</td>
+                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(maxTemp)}°`}</td>
+                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{name}</td>
                             </tr>
                         ))}
                     </tbody>
