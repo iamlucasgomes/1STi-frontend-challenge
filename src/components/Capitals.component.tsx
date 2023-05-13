@@ -42,16 +42,16 @@ export default function Capitals() {
                 <table className="table-auto">
                     <thead>
                         <tr>
-                            <th className="text-dark-gray-900 arial-light text-s text-left p-1">Min</th>
-                            <th className="text-dark-gray-900 arial-light text-s text-left p-1">Máx</th>
+                            <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Min</th>
+                            <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Máx</th>
                         </tr>
                     </thead>
                     <tbody>
                         {CapitalsWeatherMock.slice(0, 5).map((capital) => (
                             <tr key={capital.name}>
-                                <td className="text-dark-gray-900 arial-bold text-xs text-left p-1">{`${capital.minTemp}°`}</td>
-                                <td className="text-dark-gray-900 arial-bold text-xs text-left p-1">{`${capital.maxTemp}°`}</td>
-                                <td className="text-dark-gray-900 arial-bold text-xs text-left p-1 ">{capital.name}</td>
+                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${capital.minTemp}°`}</td>
+                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${capital.maxTemp}°`}</td>
+                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1 ">{capital.name}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -59,16 +59,16 @@ export default function Capitals() {
                 <table className="table-auto">
                     <thead>
                         <tr>
-                            <th className="text-dark-gray-900 arial-light text-s text-left p-1">Min</th>
-                            <th className="text-dark-gray-900 arial-light text-s text-left p-1">Máx</th>
+                            <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Min</th>
+                            <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Máx</th>
                         </tr>
                     </thead>
                     <tbody>
                         {CapitalsWeatherMock.slice(5, 10).map((capital) => (
                             <tr key={capital.name}>
-                                <td className="text-dark-gray-900 arial-bold text-xs text-left p-1">{`${capital.minTemp}°`}</td>
-                                <td className="text-dark-gray-900 arial-bold text-xs text-left p-1">{`${capital.maxTemp}°`}</td>
-                                <td className="text-dark-gray-900 arial-bold text-xs text-left p-1">{capital.name}</td>
+                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${capital.minTemp}°`}</td>
+                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${capital.maxTemp}°`}</td>
+                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{capital.name}</td>
                             </tr>
                         ))}
                     </tbody>

@@ -7,7 +7,7 @@ import Capitals from '@/components/Capitals.component';
 export default function Home() {
   const { showCard } = useAppContext();
   return (
-    <main className={`flex min-h-screen flex-col items-center p-20`}>
+    <main className={`flex min-h-screen flex-col items-center p-20 text-dark-gray-700 open-sans`}>
       <section>
         <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
           <Title title="Previsão do Tempo" />
