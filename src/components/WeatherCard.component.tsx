@@ -16,7 +16,7 @@ export default function WeatherCard() {
           <FontAwesomeIcon className="text-orange text-2xl font-twin" icon={faXmark} onClick={() => setShowCard(false)} />
         </div>
         <h1 className="open-sans px-2"><strong>{`${location.name}, ${states[location.region]} - ${location.country}`}</strong></h1>
-        <p className="p-5 px-2 text-3xl open-sans-bold text-dark-gray-700">{`${Math.round(current.temp_c)}°C ${current.condition.text}`}</p>
+        <p className="p-5 px-2 text-2xl open-sans-bold text-dark-gray-700">{`${Math.round(current.temp_c)}°C ${current.condition.text}`}</p>
         <div className="grid grid-cols-2 grid-rows-1">
           <p className="p-2 px-2 open-sans-bold text-dark-gray-700 col-span-1 row-span-1">
             <FontAwesomeIcon className="text-orange" icon={faArrowDown} />
@@ -29,7 +29,7 @@ export default function WeatherCard() {
           <p className="p-1 col-span-1 row-span-1 mt-1">Umidade <strong>{current.humidity}%</strong></p>
         </div>
         <div className="mt-3 border-t border-orange">
-          <table>
+          <table className="w-full table-fixed">
             <thead>
               {forecast.forecastday.slice(0, 5).map((day) => {
                 const myDate = new Date(day.date);

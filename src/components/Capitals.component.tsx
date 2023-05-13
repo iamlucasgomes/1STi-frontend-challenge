@@ -39,15 +39,15 @@ export default function Capitals() {
                     }))
             const weatherDataList = await Promise.all(promises);
             const capitalsWeather: CapitalsWeather[] = []
-            // console.log(weatherDataList)
+
             for (const city of weatherDataList) {
-                if(city !== null)
-                capitalsWeather.push(city)
+                if (city !== null)
+                    capitalsWeather.push(city)
             }
 
             setWeatherData(capitalsWeather);
         }
-        // console.log(capitalsWeather)
+
         fetchWeatherData()
     }, [capitals])
     return (

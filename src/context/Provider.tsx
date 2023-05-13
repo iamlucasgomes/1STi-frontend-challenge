@@ -4,6 +4,7 @@ import MyContextData from "@/interfaces/MyContextData.interface";
 import currentMock from "@/tests/mocks/current.mock";
 import forecastMock from "@/tests/mocks/forecast.mock";
 import locationMock from "@/tests/mocks/location.mock";
+import Location from "@/interfaces/Location.interface";
 
 interface IProps {
   children: ReactNode
