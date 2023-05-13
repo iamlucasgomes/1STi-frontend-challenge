@@ -11,7 +11,7 @@ export default function WeatherCard() {
 
   return (
     <section>
-      <div className="bg-white p-7 relative">
+      <div className="bg-white p-7 relative w-100">
         <div className="absolute top-0 right-1 p-2">
           <FontAwesomeIcon className="text-orange text-2xl font-twin" icon={faXmark} onClick={() => setShowCard(false)} />
         </div>
@@ -28,8 +28,8 @@ export default function WeatherCard() {
           <p className="p-1 px-2 col-span-1 row-span-1 mt-1">Vento <strong>{Math.floor(current.wind_kph)}km/h</strong></p>
           <p className="p-1 col-span-1 row-span-1 mt-1">Umidade <strong>{current.humidity}%</strong></p>
         </div>
-        <div className="mt-3 border-t border-orange">
-          <table className="w-full table-fixed">
+        <div className="mt-3 border-t border-orange flex justify-center items-center">
+          <table className="table-fixed text-center">
             <thead>
               {forecast.forecastday.slice(0, 5).map((day) => {
                 const myDate = new Date(day.date);
