@@ -3,6 +3,7 @@ import Title from '../components/Title.component'
 import WeatherCard from '@/components/WeatherCard.component'
 import { useAppContext } from '@/hooks/useAppContext.hook'
 import Capitals from '@/components/Capitals.component';
+import React from 'react'
 
 export default function Home() {
   const { showCard } = useAppContext();

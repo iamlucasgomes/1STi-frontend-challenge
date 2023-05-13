@@ -1,3 +1,5 @@
+import React from 'react'
+
 export default function Title(props: { title: string }) {
   const { title } = props
   return (
