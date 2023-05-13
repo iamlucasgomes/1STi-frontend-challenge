@@ -1,6 +1,5 @@
 import CapitalsWeather from "@/interfaces/CapitalsWeather.interface";
 import getWeatherForecastApi from "@/services/getWeatherForecastApi";
-import CapitalsWeatherMock from "@/tests/mocks/capitalsWeather.mock";
 
 import { useEffect, useState } from "react"
 
