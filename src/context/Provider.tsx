@@ -1,4 +1,4 @@
-import { ReactNode, useState, useMemo, useCallback } from "react";
+import React,{ ReactNode, useState } from "react";
 import { AppContext } from ".";
 import MyContextData from "@/interfaces/MyContextData.interface";
 import currentMock from "@/tests/mocks/current.mock";

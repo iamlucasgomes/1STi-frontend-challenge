@@ -1,5 +1,6 @@
 import CapitalsWeather from "@/interfaces/CapitalsWeather.interface";
 import getWeatherForecastApi from "@/services/getWeatherForecastApi";
+import React from 'react'
 
 import { useEffect, useState } from "react"
 

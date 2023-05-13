@@ -1,5 +1,5 @@
 import { useAppContext } from "@/hooks/useAppContext.hook";
-import { useState } from "react";
+import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown, faXmark } from "@fortawesome/free-solid-svg-icons";
 import states from "@/utils/stateAbbreviationMap";
@@ -34,14 +34,14 @@ export default function WeatherCard() {
               {forecast.forecastday.slice(0, 5).map((day) => {
                 const myDate = new Date(day.date);
                 return (
-                  <td className="p-1 text-gray-700 open-sans-bold text-sm">{dayOfTheWeek[myDate.getDay()]}</td>
+                  <td className="p-1 text-gray-700 open-sans-bold text-sm" key={dayOfTheWeek[myDate.getDay()]}>{dayOfTheWeek[myDate.getDay()]}</td>
                 );
               })}
             </thead>
             <tbody>
               {forecast.forecastday.slice(0, 5).map((day) => {
                 return (
-                  <td className="p-1 text-orange open-sans-bold text-xs">{`${Math.floor(day.day.mintemp_c)}° ${Math.floor(day.day.maxtemp_c)
+                  <td className="p-1 text-orange open-sans-bold text-xs" key={`${day.date}`}>{`${Math.floor(day.day.mintemp_c)}° ${Math.floor(day.day.maxtemp_c)
                     }°`}</td>
                 );
               })}
