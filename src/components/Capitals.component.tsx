@@ -18,6 +18,22 @@ export default function Capitals() {
         "Joao Pessoa"
     ];
     const [weatherData, setWeatherData] = useState<CapitalsWeather[]>([]);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 640);
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+
     useEffect(() => {
         async function fetchWeatherData() {
             const promises = capitals.map(capital =>
@@ -55,42 +71,65 @@ export default function Capitals() {
             <div className="mt-3 border-t border-white">
                 <h1 className="text-3xl text-start text-white arial">Capitais</h1>
             </div>
-            <div className="grid grid-cols-2">
-                <table className="table-auto">
-                    <thead>
-                        <tr>
-                            <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Min</th>
-                            <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Máx</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {weatherData.slice(0, 5).map(({ name, maxTemp, minTemp }) => (
-                            <tr key={name}>
-                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(minTemp)}°`}</td>
-                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(maxTemp)}°`}</td>
-                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1 ">{name}</td>
+            {isMobile ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2">
+                    <table className="table-auto">
+                        <thead>
+                            <tr>
+                                <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Min</th>
+                                <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Máx</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <table className="table-auto">
-                    <thead>
-                        <tr>
-                            <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Min</th>
-                            <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Máx</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {weatherData.slice(5, 10).map(({ name, maxTemp, minTemp }) => (
-                            <tr key={name}>
-                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(minTemp)}°`}</td>
-                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(maxTemp)}°`}</td>
-                                <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{name}</td>
+                        </thead>
+                        <tbody>
+                            {weatherData.slice(0, 10).map(({ name, maxTemp, minTemp }) => (
+                                <tr key={name}>
+                                    <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(minTemp)}°`}</td>
+                                    <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(maxTemp)}°`}</td>
+                                    <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1 ">{name}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+
+            ) : (
+                <div className="grid grid-cols-2">
+                    <table className="table-auto">
+                        <thead>
+                            <tr>
+                                <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Min</th>
+                                <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Máx</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {weatherData.slice(0, 5).map(({ name, maxTemp, minTemp }) => (
+                                <tr key={name}>
+                                    <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(minTemp)}°`}</td>
+                                    <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(maxTemp)}°`}</td>
+                                    <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1 ">{name}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <table className="table-auto">
+                        <thead>
+                            <tr>
+                                <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Min</th>
+                                <th className="text-dark-gray-900 open-sans-light text-s text-left p-1">Máx</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {weatherData.slice(5, 10).map(({ name, maxTemp, minTemp }) => (
+                                <tr key={name}>
+                                    <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(minTemp)}°`}</td>
+                                    <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{`${Math.floor(maxTemp)}°`}</td>
+                                    <td className="text-dark-gray-900 open-sans-bold text-xs text-left p-1">{name}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </section>
     )
 }
