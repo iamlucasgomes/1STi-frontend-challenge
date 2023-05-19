@@ -1,13 +1,12 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import AppContext from ".";
 import MyContextData from "@/interfaces/MyContextData.interface";
 import currentMock from "@/mocks/current.mock";
 import forecastMock from "@/mocks/forecast.mock";
 import locationMock from "@/mocks/location.mock";
+import IProps from "@/interfaces/IProps.interface";
 
-interface IProps {
-  children: ReactNode
-}
+
 
 const Provider = ({ children }: IProps) => {
 
