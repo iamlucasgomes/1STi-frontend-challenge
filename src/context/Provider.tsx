@@ -1,15 +1,15 @@
-import React,{ ReactNode, useState } from "react";
-import { AppContext } from ".";
+import React, { ReactNode, useState } from "react";
+import AppContext from ".";
 import MyContextData from "@/interfaces/MyContextData.interface";
-import currentMock from "@/tests/mocks/current.mock";
-import forecastMock from "@/tests/mocks/forecast.mock";
-import locationMock from "@/tests/mocks/location.mock";
+import currentMock from "@/mocks/current.mock";
+import forecastMock from "@/mocks/forecast.mock";
+import locationMock from "@/mocks/location.mock";
 
 interface IProps {
   children: ReactNode
 }
 
-export const AppContextProvider = ({ children }: IProps) => {
+const Provider = ({ children }: IProps) => {
 
   const [location, setLocation] = useState(locationMock);
   const [forecast, setForecast] = useState(forecastMock);
@@ -31,3 +31,5 @@ export const AppContextProvider = ({ children }: IProps) => {
     {children}
   </AppContext.Provider>
 }
+
+export default Provider;
