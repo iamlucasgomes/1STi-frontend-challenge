@@ -9,7 +9,7 @@ interface IProps {
   children: ReactNode
 }
 
-const AppContextProvider = ({ children }: IProps) => {
+const Provider = ({ children }: IProps) => {
 
   const [location, setLocation] = useState(locationMock);
   const [forecast, setForecast] = useState(forecastMock);
@@ -32,4 +32,4 @@ const AppContextProvider = ({ children }: IProps) => {
   </AppContext.Provider>
 }
 
-export default AppContextProvider;
+export default Provider;
